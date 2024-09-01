@@ -8,17 +8,5 @@ const axiosPrivate = axios.create({
   },
   withCredentials: true,
 });
-axiosPrivate.interceptors.request.use(
-  async (config) => {
-    const token = JSON.parse(localStorage.getItem("token"));
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
 
 export default axiosPrivate;

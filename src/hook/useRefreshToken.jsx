@@ -8,8 +8,9 @@ const useRefreshToken = () => {
     queryKey: ["refresh-Token"],
     queryFn: axiosPrivate.get("/auth/refresh").then(({ data }) => {
       console.log("data-refresh", data);
+      localStorage.setItem("token", data.AccessToken);
       setAuth(data);
-      localStorage.setItem("token", JSON.stringify(data.AccessToken));
+      return data;
     }),
   });
   return refreshTokenQ;

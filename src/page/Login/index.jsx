@@ -15,8 +15,8 @@ const Login = () => {
     mutationFn: (data) => axiosPrivate.post("/auth/signin", data).then(({ data }) => data),
     onSuccess: (data) => {
       console.log("data_login", data);
-
       setAuth(data);
+      localStorage.setItem("token", data.AccessToken);
     },
     onError: (error) => {
       console.log("error_login", error);

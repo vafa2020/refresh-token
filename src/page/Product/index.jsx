@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axiosPrivate from "../../api/axios";
 
-// /user/getUsers
 const Product = () => {
   const userListQ = useQuery({
     queryKey: ["user-list"],
-    queryFn: axiosPrivate.get("/auth/refresh").then(({ data }) => {
+    queryFn: axiosPrivate.get("/user/getUsers").then(({ data }) => {
       console.log("user-list", data);
+      return data;
     }),
   });
   console.log("userListQ", userListQ.data);
